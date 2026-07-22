@@ -58,6 +58,8 @@ h1{font-size:clamp(30px,4vw,50px)} h2{font-size:28px} h3{font-size:21px}
 .fig-grid.one,body.sidebar-collapsed .fig-grid.one{grid-template-columns:minmax(260px,min(100%,760px))}
 .fig-grid.two,body.sidebar-collapsed .fig-grid.two{grid-template-columns:repeat(2,minmax(280px,560px))}
 .fig-grid.multi,body.sidebar-collapsed .fig-grid.multi{grid-template-columns:repeat(3,minmax(260px,420px))}
+#push > .fig-grid.one:nth-of-type(2){grid-template-columns:minmax(260px,min(100%,560px))}
+article.method-card:nth-of-type(2) > .fig-grid.one{grid-template-columns:minmax(260px,min(64%,480px))}
 .figure{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#f8fafc}.figure img{display:block;width:100%;height:auto;cursor:zoom-in}.caption{padding:9px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 .figure.compact-half{max-width:520px}
 .figure.full-bleed{width:100%;max-width:none}
