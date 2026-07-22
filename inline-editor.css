@@ -1,0 +1,21 @@
+.edit-tools{position:fixed;right:18px;bottom:18px;z-index:1100;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:min(880px,calc(100vw - 36px))}
+.edit-tools button{border:1px solid #d9e2ec;border-radius:999px;padding:10px 15px;box-shadow:0 10px 24px rgba(23,32,51,.18);cursor:pointer;font-weight:700;background:#fff;color:#172033;line-height:1}
+.edit-tools button:hover{transform:translateY(-1px)}
+.edit-tools button.active,.edit-primary{background:#2f6fa8;color:#fff;border-color:#2f6fa8}
+.edit-danger{color:#b42318;border-color:#ffd0cb!important}
+.edit-tip{position:fixed;right:18px;bottom:72px;z-index:1099;padding:9px 13px;border-radius:12px;background:#172033;color:#fff;font-size:13px;box-shadow:0 10px 24px rgba(23,32,51,.2);display:none}
+body.edit-mode .edit-tip,body.mark-mode .edit-tip,body.draw-mode .edit-tip{display:block}
+body.edit-mode main [contenteditable="true"]{cursor:text;outline:1px dashed rgba(47,111,168,.45);outline-offset:3px;border-radius:4px}
+body.edit-mode main [contenteditable="true"]:hover,body.edit-mode main [contenteditable="true"]:focus{outline:3px solid #2f6fa8;background:rgba(47,111,168,.06)}
+body.mark-mode main{cursor:text}
+body.draw-mode{user-select:none}
+body.draw-mode .draw-layer{cursor:crosshair}
+.draw-layer{position:absolute;left:0;top:0;width:100%;height:max(100%,100vh);z-index:1080;pointer-events:none;overflow:visible}
+.draw-layer [data-drawing="true"]{filter:drop-shadow(0 2px 1px rgba(255,255,255,.95)) drop-shadow(0 3px 8px rgba(239,68,68,.18))}
+.inline-highlight{background:linear-gradient(transparent 43%,rgba(255,214,80,.78) 43%);border-radius:3px;padding:0 2px}
+.inline-underline{border-bottom:3px solid #ef4444;padding-bottom:1px}
+.inline-note{position:relative;background:rgba(255,247,205,.85);border-bottom:2px solid #f59e0b;border-radius:3px;padding:0 2px}
+.inline-note::after{content:attr(title);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);min-width:150px;max-width:260px;padding:8px 10px;border-radius:10px;background:#fff7cd;color:#7a2e0e;border:1px solid #f7c948;box-shadow:0 8px 18px rgba(23,32,51,.16);font-size:13px;line-height:1.45;white-space:normal;z-index:8}
+.inline-note::before{content:"";position:absolute;left:100%;top:50%;width:10px;border-top:2px solid #f59e0b}
+.inline-note:hover::after{box-shadow:0 10px 24px rgba(23,32,51,.24)}
+@media(max-width:860px){.edit-tools{left:12px;right:12px;bottom:12px}.edit-tip{left:12px;right:12px;bottom:154px}.edit-tools button{padding:10px 12px}.inline-note::after{left:0;top:calc(100% + 8px);transform:none}.inline-note::before{display:none}}

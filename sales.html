@@ -85,6 +85,7 @@ footer{color:var(--muted);font-size:13px;margin:30px 0}
 @media(max-width:1100px){.fig-grid.two,.fig-grid.multi,body.sidebar-collapsed .fig-grid.two,body.sidebar-collapsed .fig-grid.multi{grid-template-columns:repeat(2,minmax(260px,1fr))}}
 @media(max-width:860px){.layout{display:block}.sidebar{height:auto;position:relative}.toggle{display:none}body.sidebar-collapsed .brand-text,body.sidebar-collapsed .nav-label,body.sidebar-collapsed .sidebar-note{display:block}.grid,.method-row{grid-template-columns:1fr}.fig-grid.one,.fig-grid.two,.fig-grid.multi,body.sidebar-collapsed .fig-grid.one,body.sidebar-collapsed .fig-grid.two,body.sidebar-collapsed .fig-grid.multi{grid-template-columns:1fr}main{padding:22px 14px}.review-tools{left:12px;right:12px;bottom:12px}.review-panel{left:12px;right:12px;width:auto}}
 </style>
+<link rel="stylesheet" href="inline-editor.css">
 </head>
 <body>
 
@@ -273,7 +274,8 @@ footer{color:var(--muted);font-size:13px;margin:30px 0}
 </section><section id="check" class="section"><p class="eyebrow">Checklist</p><h2>培训验收</h2>
 <div class="table-wrap"><table><thead><tr><th>检查项</th><th>合格标准</th></tr></thead><tbody><tr><td>消息处理</td><td>能说明收到逾期消息后如何进入回复。</td></tr><tr><td>客户回复</td><td>能按“原因 + 预计回款日”格式完成反馈。</td></tr><tr><td>无预计回款日</td><td>能正确使用“客户无预计回款日”。</td></tr><tr><td>明细查看</td><td>能通过对话框和工作台两种方式查看本人客户逾期。</td></tr></tbody></table></div></section><footer>说明：本公开课件不展示内部系统真实地址和具体联系人；图片使用用户确认可发布的脱敏截图版本。</footer></main>
 </div>
-<div class="review-panel"><h3>页面修改标注</h3><p class="muted">点击“开启标注”后，点图片或文字输入修改意见。</p><div id="reviewList"></div></div>
-<div class="review-tools"><button id="reviewToggle" class="review-primary" onclick="toggleReviewMode()">开启标注</button><button class="review-secondary" onclick="copyReviewNotes()">复制清单</button><button class="review-secondary" onclick="clearReviewNotes()">清空标注</button></div>
+<div id="editTip" class="edit-tip">选择工具后，在页面文字上直接操作，内容会自动保存</div>
+<div class="edit-tools"><button class="edit-primary" data-edit-tool="edit" onclick="setInlineTool('edit')">编辑文字</button><button data-edit-tool="highlight" onclick="setInlineTool('highlight')">黄色标记</button><button data-edit-tool="underline" onclick="setInlineTool('underline')">红色线条</button><button data-edit-tool="circle" onclick="setInlineTool('circle')">画圈圈</button><button data-edit-tool="arrow" onclick="setInlineTool('arrow')">画箭头</button><button data-edit-tool="note" onclick="setInlineTool('note')">旁边注释</button><button class="edit-danger" onclick="restoreInlineText()">清空标记</button></div>
+<script src="inline-editor.js"></script>
 </body>
 </html>
