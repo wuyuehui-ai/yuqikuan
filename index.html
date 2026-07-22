@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>逾期款项管理系统培训课件</title>
+  <style>
+    :root {
+      --ink: #182233;
+      --muted: #5c6670;
+      --line: #dce3ea;
+      --paper: #ffffff;
+      --soft: #f5f7fa;
+      --blue: #2f6fa8;
+      --green: #3b8a65;
+      --orange: #c7792d;
+      --red: #b24d45;
+      --shadow: 0 12px 28px rgba(24, 34, 51, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--soft);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 18px;
+      color: #fff;
+      background: #182233;
+      overflow: auto;
+    }
+
+    .brand {
+      padding: 6px 8px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .brand h1 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+    }
+
+    nav {
+      display: grid;
+      gap: 6px;
+      margin-top: 22px;
+    }
+
+    nav a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    section {
+      padding: 52px clamp(24px, 5vw, 64px);
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    section:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-content: center;
+      gap: 26px;
+      color: #fff;
+      background:
+        linear-gradient(rgba(24, 34, 51, 0.90), rgba(24, 34, 51, 0.82)),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 22px),
+        #182233;
+    }
+
+    .hero h2 {
+      max-width: 860px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 8px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 14px;
+    }
+
+    .button.primary {
+      border-color: #78a9d1;
+      background: #2f6fa8;
+    }
+
+    .section-head {
+      max-width: 920px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 220px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .card ul,
+    .checklist {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .card li,
+    .checklist li {
+      margin: 8px 0;
+    }
+
+    .role-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .tag-blue { background: var(--blue); }
+    .tag-green { background: var(--green); }
+    .tag-orange { background: var(--orange); }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .step {
+      position: relative;
+      min-height: 190px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      z-index: 2;
+      color: var(--muted);
+      font-weight: 700;
+      transform: translateY(-50%);
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-size: 15px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tab {
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .tab.active {
+      color: #fff;
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+
+    .panel {
+      display: none;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .panel.active {
+      display: grid;
+    }
+
+    .note {
+      padding: 20px;
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      background: #eef5fb;
+      color: var(--muted);
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .matrix th,
+    .matrix td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .matrix th {
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .matrix tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .quiz {
+      display: grid;
+      gap: 12px;
+      max-width: 920px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 16px 18px;
+      font-weight: 700;
+    }
+
+    details p {
+      margin: 0;
+      padding: 0 18px 18px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 28px clamp(24px, 5vw, 64px);
+      color: var(--muted);
+      background: #f8fafc;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1000px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+        height: auto;
+      }
+
+      nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cards,
+      .flow,
+      .panel {
+        grid-template-columns: 1fr;
+      }
+
+      .step:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 38px 18px;
+      }
+
+      nav {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <div class="brand">
+        <h1>逾期款项管理培训</h1>
+        <p>HTML 课件 · 公开发布安全版</p>
+      </div>
+      <nav aria-label="课件导航">
+        <a href="#overview">课程目标</a>
+        <a href="#flow">流程闭环</a>
+        <a href="#roles">角色操作</a>
+        <a href="#data">数据质量</a>
+        <a href="#faq">常见问题</a>
+        <a href="#check">落地检查</a>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="hero" id="overview">
+        <p class="eyebrow">Training Course</p>
+        <h2>逾期款项管理系统培训课件</h2>
+        <p>面向业务、财务、管理三类角色，帮助团队建立从逾期提醒、过程反馈、回款核销到管理复盘的统一操作认知。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#roles">开始学习</a>
+          <a class="button" href="#check">查看检查清单</a>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Objectives</p>
+          <h2>三类角色，各有重点</h2>
+          <p>培训重点不是让所有人学会所有功能，而是让每个角色清楚自己在闭环中的动作、标准和交付结果。</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <span class="role-tag tag-blue">业</span>
+            <h3>业务角色</h3>
+            <ul>
+              <li>接收逾期提醒并核对客户事项</li>
+              <li>反馈逾期原因和预计回款安排</li>
+              <li>持续查看个人客户跟进状态</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="role-tag tag-green">财</span>
+            <h3>财务角色</h3>
+            <ul>
+              <li>准备并导入逾期基础数据</li>
+              <li>录入回款并处理匹配异常</li>
+              <li>维护逾期记录状态和报表准确性</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="role-tag tag-orange">管</span>
+            <h3>管理角色</h3>
+            <ul>
+              <li>查看周报和风险客户清单</li>
+              <li>按维度筛选下钻</li>
+              <li>推动跨部门回款闭环</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="flow">
+        <div class="section-head">
+          <p class="eyebrow">Workflow</p>
+          <h2>系统运行闭环</h2>
+          <p>逾期管理的关键是让数据、提醒、反馈、回款和复盘都留下可追踪记录。</p>
+        </div>
+        <div class="flow">
+          <div class="step">
+            <strong>1. 数据准备</strong>
+            <p>整理客户、金额、日期、责任人等基础字段，确保口径统一。</p>
+          </div>
+          <div class="step">
+            <strong>2. 系统提醒</strong>
+            <p>根据规则向责任人推送待处理事项，减少人工遗漏。</p>
+          </div>
+          <div class="step">
+            <strong>3. 业务反馈</strong>
+            <p>记录逾期原因、沟通进展和预计回款时间。</p>
+          </div>
+          <div class="step">
+            <strong>4. 回款核销</strong>
+            <p>财务录入回款记录，并与逾期事项进行匹配。</p>
+          </div>
+          <div class="step">
+            <strong>5. 管理复盘</strong>
+            <p>通过报表和周报识别风险、跟踪改善结果。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="roles">
+        <div class="section-head">
+          <p class="eyebrow">Role Guide</p>
+          <h2>角色操作要点</h2>
+          <p>点击角色标签切换学习内容，适合培训讲师现场带学，也适合员工自学回看。</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="角色操作">
+          <button class="tab active" data-tab="sales" type="button">业务角色</button>
+          <button class="tab" data-tab="finance" type="button">财务角色</button>
+          <button class="tab" data-tab="manager" type="button">管理角色</button>
+        </div>
+        <div class="panel active" data-panel="sales">
+          <div class="card">
+            <h3>业务角色：反馈要有效</h3>
+            <ul>
+              <li>收到提醒后，先确认客户和逾期事项是否准确。</li>
+              <li>反馈应包含逾期原因、沟通进展、预计回款时间。</li>
+              <li>没有明确回款时间时，按系统提供的无预计日期选项处理。</li>
+              <li>定期查看本人客户逾期列表，避免遗漏高风险客户。</li>
+            </ul>
+          </div>
+          <div class="note">有效反馈的标准是“原因明确、时间明确、责任明确、下一步动作明确”。只写“已沟通”“客户会处理”通常无法支撑后续管理。</div>
+        </div>
+        <div class="panel" data-panel="finance">
+          <div class="card">
+            <h3>财务角色：数据要准确</h3>
+            <ul>
+              <li>按固定周期准备逾期数据，导入前检查关键字段。</li>
+              <li>导入后核对成功记录、异常记录和当前生效批次。</li>
+              <li>回款录入后关注自动匹配、多条匹配和未匹配记录。</li>
+              <li>特殊情况需要人工维护状态，确保报表口径一致。</li>
+            </ul>
+          </div>
+          <div class="note">财务操作的关键不是“导进去就结束”，而是导入后检查、回款后匹配、异常后闭环。</div>
+        </div>
+        <div class="panel" data-panel="manager">
+          <div class="card">
+            <h3>管理角色：风险要下钻</h3>
+            <ul>
+              <li>通过周报查看整体逾期规模和变化趋势。</li>
+              <li>按组织、部门、责任人、账龄等维度筛选。</li>
+              <li>重点关注长账龄、高金额、无反馈、反复逾期事项。</li>
+              <li>结合明细推动责任人与财务协同处理。</li>
+            </ul>
+          </div>
+          <div class="note">管理层查看报表时，应从“金额变化”继续追到“客户、责任人、下一步动作”，否则周报容易停留在展示层。</div>
+        </div>
+      </section>
+
+      <section id="data">
+        <div class="section-head">
+          <p class="eyebrow">Data Quality</p>
+          <h2>数据质量检查</h2>
+          <p>逾期管理系统的效果，取决于基础数据是否干净、责任是否明确、状态是否及时更新。</p>
+        </div>
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>数据项</th>
+              <th>检查要求</th>
+              <th>影响</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>客户信息</td>
+              <td>客户名称应统一，避免同一客户多种写法。</td>
+              <td>影响回款匹配和客户维度统计。</td>
+            </tr>
+            <tr>
+              <td>金额信息</td>
+              <td>逾期金额、回款金额应可核对。</td>
+              <td>影响风险金额和结清判断。</td>
+            </tr>
+            <tr>
+              <td>日期信息</td>
+              <td>业务日期、到期日、预计回款日应格式一致。</td>
+              <td>影响账龄、提醒和周报口径。</td>
+            </tr>
+            <tr>
+              <td>责任信息</td>
+              <td>责任人、部门、组织维度应准确。</td>
+              <td>影响推送触达和管理下钻。</td>
+            </tr>
+            <tr>
+              <td>状态信息</td>
+              <td>待处理、已反馈、已结清等状态应及时维护。</td>
+              <td>影响待办列表和闭环统计。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="faq">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>常见问题处理口径</h2>
+          <p>培训时可以把这些问题作为现场问答，也可以作为新员工自查材料。</p>
+        </div>
+        <div class="quiz">
+          <details>
+            <summary>客户匹配失败怎么办？</summary>
+            <p>优先检查客户名称是否一致，再确认是否存在多条待匹配记录。必要时由财务人工选择正确记录。</p>
+          </details>
+          <details>
+            <summary>提醒没有触达到责任人怎么办？</summary>
+            <p>检查责任人状态、推送规则、客户提醒开关以及记录状态是否符合推送条件。</p>
+          </details>
+          <details>
+            <summary>报表与实际不一致怎么办？</summary>
+            <p>确认最新数据是否导入成功、批次是否生效、导入范围是否完整，以及异常记录是否处理。</p>
+          </details>
+          <details>
+            <summary>客户已回款但仍显示未结清怎么办？</summary>
+            <p>检查回款记录是否匹配到正确逾期事项，必要时手动维护状态并保留处理记录。</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="check">
+        <div class="section-head">
+          <p class="eyebrow">Checklist</p>
+          <h2>培训落地检查清单</h2>
+          <p>完成培训后，可以按下面清单检查三类角色是否真正会用。</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>业务角色会不会</h3>
+            <ul class="checklist">
+              <li>找到自己的逾期提醒</li>
+              <li>填写有效反馈</li>
+              <li>查看历史跟进记录</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>财务角色会不会</h3>
+            <ul class="checklist">
+              <li>导入逾期数据</li>
+              <li>录入回款记录</li>
+              <li>处理匹配异常</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>管理角色会不会</h3>
+            <ul class="checklist">
+              <li>查看周报摘要</li>
+              <li>筛选和下钻明细</li>
+              <li>识别重点风险事项</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <p>公开版说明：本页面不包含内部系统地址、截图、联系人、组织专属流程或敏感业务数据。</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const panels = document.querySelectorAll(".panel");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.tab;
+        tabs.forEach((item) => item.classList.toggle("active", item === tab));
+        panels.forEach((panel) => {
+          panel.classList.toggle("active", panel.dataset.panel === target);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
