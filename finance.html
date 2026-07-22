@@ -83,7 +83,7 @@ footer{color:var(--muted);font-size:13px;margin:30px 0}
 @media(max-width:1100px){.fig-grid.two,.fig-grid.multi,body.sidebar-collapsed .fig-grid.two,body.sidebar-collapsed .fig-grid.multi{grid-template-columns:repeat(2,minmax(260px,1fr))}}
 @media(max-width:860px){.layout{display:block}.sidebar{height:auto;position:relative}.toggle{display:none}body.sidebar-collapsed .brand-text,body.sidebar-collapsed .nav-label,body.sidebar-collapsed .sidebar-note{display:block}.grid,.method-row{grid-template-columns:1fr}.fig-grid.one,.fig-grid.two,.fig-grid.multi,body.sidebar-collapsed .fig-grid.one,body.sidebar-collapsed .fig-grid.two,body.sidebar-collapsed .fig-grid.multi{grid-template-columns:1fr}main{padding:22px 14px}.review-tools{left:12px;right:12px;bottom:12px}.review-panel{left:12px;right:12px;width:auto}}
 </style>
-<link rel="stylesheet" href="inline-editor.css">
+<link rel="stylesheet" href="course-tools.css">
 </head>
 <body>
 
@@ -279,6 +279,6 @@ footer{color:var(--muted);font-size:13px;margin:30px 0}
 </div>
 <div id="editTip" class="edit-tip">选择工具后，在页面文字上直接操作，内容会自动保存</div>
 <div class="edit-tools"><button class="edit-primary" data-edit-tool="edit" onclick="setInlineTool('edit')">编辑文字</button><button data-edit-tool="highlight" onclick="setInlineTool('highlight')">黄色标记</button><button data-edit-tool="underline" onclick="setInlineTool('underline')">红色线条</button><button data-edit-tool="circle" onclick="setInlineTool('circle')">画圈圈</button><button data-edit-tool="arrow" onclick="setInlineTool('arrow')">画箭头</button><button data-edit-tool="note" onclick="setInlineTool('note')">旁边注释</button><button class="edit-danger" onclick="restoreInlineText()">清空标记</button></div>
-<script src="inline-editor.js"></script>
+<script src="course-tools.js"></script>
 </body>
 </html>
