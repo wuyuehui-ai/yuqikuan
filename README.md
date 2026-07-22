@@ -1,26 +1,25 @@
-# 逾期款项管理系统图文培训课件
+# 逾期款项管理系统分角色图文培训课件
 
-这是一个可部署到 GitHub Pages 的静态 HTML 图文培训课件页面。
+这是一个部署到 GitHub Pages 的静态 HTML 培训课件站点，按照三个使用角色拆分：
 
-## 文件
+- `index.html`：培训入口与课程目录
+- `sales.html`：业务员逾期款系统操作培训
+- `finance.html`：财务人员逾期款系统操作培训
+- `management.html`：管理层周报与数据查看培训
 
-- `index.html`：培训课件页面
-- `assets/screenshots/`：脱敏后的操作截图
+## 图片素材
 
-## 说明
+截图素材位于：
 
-公开版已移除：
+- `assets/screenshots-clear/sales/`
+- `assets/screenshots-clear/finance/`
+- `assets/screenshots-clear/management/`
 
-- 内部系统地址
-- 原始系统截图
-- 联系人和组织内部信息
-- 具体内部字段、批次、数据和操作细节
+这些截图由用户确认已经完成脱敏，可用于课件展示。
 
-页面保留了角色分工、流程闭环、业务员操作、财务操作、管理层查看、常见问题和培训检查清单，并配有脱敏截图示意。
+## 部署方式
 
-## GitHub Pages
-
-如果仓库未开启 Pages，可在 GitHub 仓库中进入：
+GitHub Pages 使用 `main` 分支根目录发布：
 
 `Settings -> Pages -> Build and deployment -> Source -> Deploy from a branch`
 
