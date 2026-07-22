@@ -52,15 +52,21 @@ h1{font-size:clamp(30px,4vw,50px)} h2{font-size:28px} h3{font-size:21px}
 .method-kicker{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;background:#eef5fb;color:#285b89;font-size:12px;font-weight:800;margin-bottom:10px}
 .method-card.recommended .method-kicker{background:#2f6fa8;color:#fff}
 .method-card .fig-grid{margin-top:14px}
+.method-card.large-gallery .fig-grid.two,.method-card.large-gallery .fig-grid.multi{grid-template-columns:minmax(0,1fr)}
 .fig-grid{display:grid;gap:14px;margin-top:18px;align-items:start;justify-content:start}
 .fig-grid.one,body.sidebar-collapsed .fig-grid.one{grid-template-columns:minmax(260px,min(100%,760px))}
 .fig-grid.two,body.sidebar-collapsed .fig-grid.two{grid-template-columns:repeat(2,minmax(280px,560px))}
 .fig-grid.multi,body.sidebar-collapsed .fig-grid.multi{grid-template-columns:repeat(3,minmax(260px,420px))}
-.figure{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#f8fafc}.figure img{display:block;width:100%;height:auto}.caption{padding:9px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+.figure{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#f8fafc}.figure img{display:block;width:100%;height:auto;cursor:zoom-in}.caption{padding:9px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 .figure.compact-half{max-width:520px}
 .figure.full-bleed{width:100%;max-width:none}
 .fig-grid.one.full-width,body.sidebar-collapsed .fig-grid.one.full-width{grid-template-columns:minmax(0,1fr)}
 .pending-image{margin-top:18px;border:1px dashed #b8c4d4;border-radius:18px;padding:28px;background:#f8fafc;color:var(--muted);text-align:center}
+.image-lightbox{position:fixed;inset:0;background:rgba(10,16,28,.82);z-index:2000;display:none;align-items:center;justify-content:center;padding:34px}
+.image-lightbox.open{display:flex}.image-lightbox img{max-width:96vw;max-height:90vh;object-fit:contain;border-radius:12px;box-shadow:0 20px 70px rgba(0,0,0,.45);background:#fff}
+.image-lightbox .lightbox-caption{position:fixed;left:24px;right:24px;bottom:18px;color:#fff;text-align:center;font-size:14px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.image-lightbox .lightbox-close{position:fixed;right:22px;top:18px;border:0;border-radius:999px;padding:10px 14px;background:#fff;color:#172033;font-weight:800;cursor:pointer}
+body.lightbox-open{overflow:hidden}
 table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}th{background:#f1f5f9}
 .callout{border-left:5px solid var(--blue);background:#f4f9fd;padding:14px 16px;border-radius:12px;margin:14px 0}.warning{border-left-color:var(--orange);background:#fff8ef}.danger{border-left-color:var(--red);background:#fff5f5}
 .review-tools{position:fixed;right:18px;bottom:18px;z-index:1000;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
@@ -87,6 +93,40 @@ footer{color:var(--muted);font-size:13px;margin:30px 0}
     document.body.classList.toggle("sidebar-collapsed");
     localStorage.setItem(key, document.body.classList.contains("sidebar-collapsed") ? "1" : "0");
   };
+})();
+</script>
+<script>
+(function(){
+  let overlay;
+  function ensureOverlay(){
+    if (overlay) return overlay;
+    overlay = document.createElement("div");
+    overlay.className = "image-lightbox";
+    overlay.innerHTML = '<button class="lightbox-close" type="button">关闭 ×</button><img alt=""><div class="lightbox-caption"></div>';
+    document.body.appendChild(overlay);
+    overlay.addEventListener("click", function(e){
+      if (e.target === overlay || e.target.closest(".lightbox-close")) closeLightbox();
+    });
+    return overlay;
+  }
+  function closeLightbox(){
+    if (!overlay) return;
+    overlay.classList.remove("open");
+    document.body.classList.remove("lightbox-open");
+  }
+  document.addEventListener("click", function(e){
+    if (document.body.classList.contains("review-mode")) return;
+    const img = e.target.closest("main figure img");
+    if (!img) return;
+    e.preventDefault();
+    const box = ensureOverlay();
+    box.querySelector("img").src = img.src;
+    box.querySelector("img").alt = img.alt || "";
+    box.querySelector(".lightbox-caption").textContent = img.closest("figure")?.querySelector(".caption")?.textContent?.trim() || img.alt || "点击背景或按 Esc 关闭";
+    box.classList.add("open");
+    document.body.classList.add("lightbox-open");
+  });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeLightbox(); });
 })();
 </script>
 <script>
