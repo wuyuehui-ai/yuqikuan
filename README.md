@@ -9,7 +9,9 @@
 
 ## 图片素材
 
-截图素材位于：
+三个角色页面已将截图压缩后内嵌到 HTML 中，因此 GitHub Pages 发布时不依赖额外图片目录。
+
+本地源截图保留在：
 
 - `assets/screenshots-clear/sales/`
 - `assets/screenshots-clear/finance/`
