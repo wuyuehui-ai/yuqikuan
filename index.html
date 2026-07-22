@@ -47,12 +47,13 @@ h1{font-size:clamp(30px,4vw,50px)} h2{font-size:28px} h3{font-size:21px}
 .lesson.green .badge{background:#e9f5ef;color:#2b7355}.lesson.orange .badge{background:#fff0de;color:#a56522}.lesson.red .badge{background:#fff0ef;color:#a2403a}
 .steps{margin:14px 0 0;padding-left:22px}.steps li{margin:6px 0}
 .method-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+.method-row.stacked{grid-template-columns:1fr}
 .method-card{border:1px solid var(--line);border-radius:18px;background:#fff;padding:18px;box-shadow:0 10px 22px rgba(23,32,51,.05)}
 .method-card.recommended{border-color:#9dc8ea;background:linear-gradient(180deg,#f6fbff,#fff)}
 .method-kicker{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;background:#eef5fb;color:#285b89;font-size:12px;font-weight:800;margin-bottom:10px}
 .method-card.recommended .method-kicker{background:#2f6fa8;color:#fff}
 .method-card .fig-grid{margin-top:14px}
-.method-card.large-gallery .fig-grid.two,.method-card.large-gallery .fig-grid.multi{grid-template-columns:minmax(0,1fr)}
+.method-card.large-gallery .fig-grid.two,.method-card.large-gallery .fig-grid.multi{grid-template-columns:repeat(2,minmax(320px,1fr))}
 .fig-grid{display:grid;gap:14px;margin-top:18px;align-items:start;justify-content:start}
 .fig-grid.one,body.sidebar-collapsed .fig-grid.one{grid-template-columns:minmax(260px,min(100%,760px))}
 .fig-grid.two,body.sidebar-collapsed .fig-grid.two{grid-template-columns:repeat(2,minmax(280px,560px))}
@@ -232,7 +233,7 @@ footer{color:var(--muted);font-size:13px;margin:30px 0}
 <section class="hero">
   <p class="eyebrow">Training Course</p>
   <h1>逾期款项管理系统培训课件</h1>
-  <p class="lead">基于三份 Word 操作手册重新整理：按管理员、业务人员、财务人员三个角色拆分，每套课件包含完整操作步骤、对应截图、表格说明和培训验收点。</p>
+  <p class="lead">本课件用于培训管理员、业务人员、财务人员掌握逾期款项管理系统的日常操作流程，便于快速查阅入口、步骤和截图示例。</p>
   <div class="buttons"><a class="button primary" href="management.html">进入管理员课件</a><a class="button" href="sales.html">进入业务人员课件</a><a class="button" href="finance.html">进入财务人员课件</a></div>
 </section>
 <section class="section">
