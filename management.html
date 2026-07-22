@@ -47,12 +47,13 @@ h1{font-size:clamp(30px,4vw,50px)} h2{font-size:28px} h3{font-size:21px}
 .lesson.green .badge{background:#e9f5ef;color:#2b7355}.lesson.orange .badge{background:#fff0de;color:#a56522}.lesson.red .badge{background:#fff0ef;color:#a2403a}
 .steps{margin:14px 0 0;padding-left:22px}.steps li{margin:6px 0}
 .method-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+.method-row.stacked{grid-template-columns:1fr}
 .method-card{border:1px solid var(--line);border-radius:18px;background:#fff;padding:18px;box-shadow:0 10px 22px rgba(23,32,51,.05)}
 .method-card.recommended{border-color:#9dc8ea;background:linear-gradient(180deg,#f6fbff,#fff)}
 .method-kicker{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;background:#eef5fb;color:#285b89;font-size:12px;font-weight:800;margin-bottom:10px}
 .method-card.recommended .method-kicker{background:#2f6fa8;color:#fff}
 .method-card .fig-grid{margin-top:14px}
-.method-card.large-gallery .fig-grid.two,.method-card.large-gallery .fig-grid.multi{grid-template-columns:minmax(0,1fr)}
+.method-card.large-gallery .fig-grid.two,.method-card.large-gallery .fig-grid.multi{grid-template-columns:repeat(2,minmax(320px,1fr))}
 .fig-grid{display:grid;gap:14px;margin-top:18px;align-items:start;justify-content:start}
 .fig-grid.one,body.sidebar-collapsed .fig-grid.one{grid-template-columns:minmax(260px,min(100%,760px))}
 .fig-grid.two,body.sidebar-collapsed .fig-grid.two{grid-template-columns:repeat(2,minmax(280px,560px))}
