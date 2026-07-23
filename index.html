@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
@@ -58,6 +58,17 @@ h1{font-size:clamp(30px,4vw,50px)} h2{font-size:28px} h3{font-size:21px}
 .fig-grid.one,body.sidebar-collapsed .fig-grid.one{grid-template-columns:minmax(260px,min(100%,760px))}
 .fig-grid.two,body.sidebar-collapsed .fig-grid.two{grid-template-columns:repeat(2,minmax(280px,560px))}
 .fig-grid.multi,body.sidebar-collapsed .fig-grid.multi{grid-template-columns:repeat(3,minmax(260px,420px))}
+
+/* 问题对比样式 */
+.problems-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.problem-item{display:flex;flex-direction:column;gap:12px}
+.problem-before,.problem-after{border-radius:14px;padding:16px}
+.problem-before{background:#fff5f5;border:1px solid #ffd7d7}
+.problem-after{background:#f0fff4;border:1px solid #c3f0d8}
+.problem-label{display:inline-block;font-weight:800;font-size:12px;padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.problem-before .problem-label{background:#ffe0e0;color:#a02020}
+.problem-after .problem-label{background:#d4f5e0;color:#2a7040}
+.problem-before p,.problem-after p{margin:0;font-size:14px;line-height:1.6}
 .figure{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#f8fafc}.figure img{display:block;width:100%;height:auto;cursor:zoom-in}.caption{padding:9px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 .figure.compact-half{max-width:520px}
 .figure.full-bleed{width:100%;max-width:none}
@@ -238,7 +249,78 @@ footer{color:var(--muted);font-size:13px;margin:30px 0}
   <div class="buttons"><a class="button primary" href="management.html">进入管理层课件</a><a class="button" href="sales.html">进入业务人员课件</a><a class="button" href="finance.html">进入财务人员课件</a></div>
 </section>
 <section class="section">
-  <p class="eyebrow">Roles</p><h2>三个角色，三条学习路径</h2>
+  <p class="eyebrow">Roles</p></section>
+<section class="section">
+  <p class="eyebrow">Why</p><h2>为什么要做这个系统</h2>
+  <p class="lead" style="margin-bottom:20px">将逾期管理从<strong>"人工 Excel 时代"</strong>升级到<strong>"自动化平台时代"</strong>：</p>
+  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+    <article class="card" style="border-left:4px solid var(--green)">
+      <p style="font-size:28px;margin:0 0 8px">📊</p>
+      <h3>财务只负责导入数据</h3>
+      <p class="muted">不用再手工汇总、发邮件、等回复</p>
+    </article>
+    <article class="card" style="border-left:4px solid var(--blue)">
+      <p style="font-size:28px;margin:0 0 8px">📱</p>
+      <h3>系统自动推送到业务员手机</h3>
+      <p class="muted">通过企业微信实时送达</p>
+    </article>
+    <article class="card" style="border-left:4px solid var(--orange)">
+      <p style="font-size:28px;margin:0 0 8px">✅</p>
+      <h3>业务员一键回复反馈</h3>
+      <p class="muted">点按钮即可填写原因和预计日期</p>
+    </article>
+    <article class="card" style="border-left:4px solid var(--red)">
+      <p style="font-size:28px;margin:0 0 8px">📈</p>
+      <h3>管理者随时看到报表</h3>
+      <p class="muted">多维度数据看板，实时掌控全局</p>
+    </article>
+  </div>
+  <div style="background:linear-gradient(135deg,#e8f5e9,#f3f8fb);border-radius:16px;padding:20px 24px;margin-top:20px;text-align:center">
+    <p style="margin:0;font-size:20px;font-weight:700;color:var(--ink)">从 <span style="color:var(--red)">"人追数据"</span> 变成 <span style="color:var(--green)">"数据追人"</span></p>
+  </div>
+</section>
+<section class="section">
+  <p class="eyebrow">Problems</p><h2>系统解决了哪些核心问题</h2>
+  <div class="problems-grid">
+    <div class="problem-item">
+      <div class="problem-before"><span class="problem-label">❌ 以前</span><p>逾期数据散落在各人电脑的 Excel 里，数据版本不一致，财务翻半天表格、手工汇总、发邮件、等回复</p></div>
+      <div class="problem-after"><span class="problem-label">✅ 现在</span><p><strong>系统汇总</strong>，系统发邮件，数据直观可见，入口方便随时查看</p></div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-before"><span class="problem-label">❌ 以前</span><p>业务员有没有去催？催得怎么样？客户说下周付款，谁来跟进？——没人知道</p></div>
+      <div class="problem-after"><span class="problem-label">✅ 现在</span><p>系统通过<strong>企业微信自动推送</strong>到业务员手机，点按钮即可回复「已联系」「已承诺」</p></div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-before"><span class="problem-label">❌ 以前</span><p>没有数据看板，没有趋势分析，一周过去数据又变了，又要重新问一轮</p></div>
+      <div class="problem-after"><span class="problem-label">✅ 现在</span><p>多维度报表（总金额、笔数、反馈率、账龄分布、月度趋势），按人员/部门/公司随时切换，图表一目了然</p></div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-before"><span class="problem-label">❌ 以前</span><p>客户只回了一部分钱怎么记？一笔回款对应多个逾期单据怎么分？——手工算，容易错</p></div>
+      <div class="problem-after"><span class="problem-label">✅ 现在</span><p><strong>FIFO 智能分摊</strong>自动按到期日顺序分摊，<strong>自动结清</strong>达标时自动标记，支持部分对账</p></div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-before"><span class="problem-label">❌ 以前</span><p>每天催客户嫌烦，不催逾期越来越多，大客户小客户一个频率——不合理</p></div>
+      <div class="problem-after"><span class="problem-label">✅ 现在</span><p><strong>子公司级推送配置</strong>独立设置，<strong>常规+跟进双模式</strong>互补，按客户配置催收频率</p></div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-before"><span class="problem-label">❌ 以前</span><p>越南公司金额需手动查汇率逐个换算，报表金额和实际有出入</p></div>
+      <div class="problem-after"><span class="problem-label">✅ 现在</span><p><strong>VND 自动换算</strong>，自动从 API 获取或手动设置，金额旁显示等值 tooltip</p></div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <p class="eyebrow">Advantages</p><h2>系统八大核心优势</h2>
+  <div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+    <article class="card"><p style="font-size:24px;margin:0 0 10px">💬</p><h3>企业微信深度集成</h3><p class="muted">卡片推送、按钮回复、自动登录、扫码登录、双渠道周报</p></article>
+    <article class="card"><p style="font-size:24px;margin:0 0 10px">📊</p><h3>报表分析强大</h3><p class="muted">多维度切换、多种图表、下钻功能、客户月度明细表</p></article>
+    <article class="card"><p style="font-size:24px;margin:0 0 10px">🏢</p><h3>组织架构灵活</h3><p class="muted">拖拽式管理、三层结构、批量移动、权限自动关联</p></article>
+    <article class="card"><p style="font-size:24px;margin:0 0 10px">⚡</p><h3>自动化程度高</h3><p class="muted">自动推送、备份、结清、纠正日期、生成单号</p></article>
+    <article class="card"><p style="font-size:24px;margin:0 0 10px">🔐</p><h3>权限体系完善</h3><p class="muted">RBAC角色、数据范围控制、细粒度权限、2FA认证</p></article>
+    <article class="card"><p style="font-size:24px;margin:0 0 10px">📥</p><h3>导入功能强大</h3><p class="muted">批量导入、智能预览、粘贴导入、批次对比、历史追溯</p></article>
+    <article class="card"><p style="font-size:24px;margin:0 0 10px">📱</p><h3>多端适配</h3><p class="muted">PC后台、H5手机端、企业微信卡片、暗色模式</p></article>
+    <article class="card"><p style="font-size:24px;margin:0 0 10px">🛡️</p><h3>安全可靠</h3><p class="muted">密码哈希、Session超时、登录日志、操作日志、数据隔离</p></article>
+  </div>
+</section><h2>三个角色，三条学习路径</h2>
   <div class="grid">
     <article class="card"><h3>管理员</h3><p class="muted">登录系统、查看周报、理解周报指标、筛选逾期数据和查看报表。</p></article>
     <article class="card"><h3>业务人员</h3><p class="muted">接收逾期推送、反馈客户回复、查看本人客户逾期明细和历史反馈。</p></article>
